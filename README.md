@@ -38,7 +38,6 @@
   - Agent의 고객 전화 연결 업무 화면 Frontend/Backend 개발
     > AWS Connect 팀에서 개발한 페이지의 iframe 안에 들어가는 고객전화 연결 화면 및 각종 Utility 화면 개발
   - Okta 로그인 세션 및 쿠키 확인, 리디렉션 과정에서의 병목 현상 해결, 로그인 로직 CloudFront Functions 로 통합 관리하여, 페이지의 최초 렌더링 과정 단축
-  - [대한항공 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#4-대한항공-aiccai-contact-center-구축-프로젝트)
 
     > 성과: 홈화면 렌더링 속도 10초 → 3초 미만으로 개선 (70% 이상 단축)
 
@@ -48,7 +47,10 @@
     > 성과: AWS Connect 콘솔에서 한 번의 로그인으로 모든 기능 탭(iframe)에서 로그인 세션 공유/유지 가능
 
   - 브라우저의 BroadcastChannel API를 활용해, 각 기능 탭(iframe) 간 통신 기능 개발
+
     > 성과: 각 기능 탭 사이에 특정기능(알람기능)에서 메세지를 전달하도록 해, 특정 기능들의 실행 상태를 공유하도록 기능 개선
+
+  - [대한항공 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#4-대한항공-aiccai-contact-center-구축-프로젝트)
 
 - **AI Chatbot 서비스 - AI 지혜 개발**
 
@@ -56,7 +58,10 @@
   - 사용기술: `Vue` / `Node`(strapi) / `MySQL5.7` / `AWS EC2` / `Nginx` / `AWS Lex` / `Claude API` / `Mistral AI API`
   - 3명의 개발자를 리딩하여 개발을 진행. 신규 AI 챗봇 아키텍처를 설계 및 구현, 서버, 커스텀 경량 NLP 관련 업무를 맡음
   - 전체 질문/답변 로직에 사전 데이터 셋 생성하는 기능 추가 & 생성형 AI API 기능 연동 로직 담당 작업 - Cladue API를 Mistral AI API로 대체
+
     > 성과: 챗봇 실시간 응답 생성 속도가 평균 15초 → 2초대로 개선되어 약 85% 성능 향상
+
+  - [AI-Jihye 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#3-ai-chatbot-서비스---ai-지혜-개발)
 
 - **영업자 관리 CRM - Members Here 서비스 개발**
 
@@ -73,6 +78,7 @@
   - 결제 시스템 연동 및 구독 관리 기능 개발
   - 의사&약사 화상 상담 기능 개발 주도
     > 센드버드의 화상통화 솔루션 연동
+  - [힐러비 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#2-주힐러비--넷마블--coway---구독가능-건강관리-식품화장품-쇼핑몰-개발)
 
 - **미분양 해결 플랫폼 - MGM Here**
 
@@ -105,7 +111,10 @@
   - [Here Service Overview](https://here.re.kr/here_service_211105.pdf)
     > 부동산을 원하는 고객의 데이터를 원하는 대로 설계하여 수집하고 카카오친구톡 or 단체 문자를 통하여 계약율을 올리는 솔루션. 사전영업, 방문예약, 워킹고객, 상담고객등의 데이터를 수집 할수 있고, 데이터 수집 비용과 마케팅 비용을 효과적으로 줄여주는 효과 제공.
   - 모델하우스 상담사 시스템 개발
+
     > 모델하우스 내에 상주하는 상담사가 사용하는 시스템으로, 아파트 구매에 관심이 있는 고객에게 분양 상품을 소개하고 판매하기 위해 사용하는 영업 전문가용 시스템. 계약 잠정 고객들의 데이터를 모아, 어드민 사이트 내 대시보드 페이지에 중요 데이터(설문 데이터 등)를 디스플레이하는 시스템
+
+  - [분양 CRM 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#1-분양-crm---here-서비스-개발)
 
 ---
 
