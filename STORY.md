@@ -28,6 +28,6 @@ yjWDNi6eecC0vXLE8zevavJxaqUQwWgmQFtxm4c07XGeVra5dNknfe6qDtigN90BFeKgv3C6AbwRcwrV
 
 ### 4. 대한항공 AICC(AI Contact Center) 구축 프로젝트
 
-![AICC_Front_Architecture](assets/img/AICC_AWS_Connect_front_architecture1.png)
+![AICC_Front_Architecture](assets/img/AICC_AWS_Connect_front_architecture_1.png)
 
 [처음으로](#park-gyeongsil-story)
