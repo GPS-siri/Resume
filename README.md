@@ -38,6 +38,7 @@
   - Agent의 고객 전화 연결 업무 화면 Frontend/Backend 개발
     > AWS Connect 팀에서 개발한 페이지의 iframe 안에 들어가는 고객전화 연결 화면 및 각종 Utility 화면 개발
   - Okta 로그인 세션 및 쿠키 확인, 리디렉션 과정에서의 병목 현상 해결, 로그인 로직 CloudFront Functions 로 통합 관리하여, 페이지의 최초 렌더링 과정 단축
+  - [대한항공 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#4-대한항공-aiccai-contact-center-구축-프로젝트)
 
     > 성과: 홈화면 렌더링 속도 10초 → 3초 미만으로 개선 (70% 이상 단축)
 
