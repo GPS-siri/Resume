@@ -37,6 +37,7 @@
 > 기존 아키텍처 그림 그리고, 해당 아키텍처 보다 나라면 이렇게 하겠다는 아키텍처 그림 추가 필요
 
 ![AICC_AWS_Connect_Front_Architecture_1](assets/img/AICC_AWS_Connect_front_architecture_1.png)
-![AICC_Frontend_Architecture_1](assets/img/AICC_Frontend_Architecture_1.png)
+![AICC_Frontend_Architecture_1](assets/img/AICC_Frontend_Architecture1.png)
+![AICC_Frontend_Architecture_2](assets/img/AICC_Frontend_Architecture2.png)
 
 [처음으로](#park-gyeongsil-story)
