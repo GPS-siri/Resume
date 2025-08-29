@@ -36,8 +36,8 @@
 > 유틸리티 탭이 하나라도 열려 있다면, 메세지 알람이 팝업 되어야 하기 때문에 여러개의 알람이 뜨지 않게 하기 위해 모든 탭들이 알람이 뜬다는 상태를 공유하기 위해 브라우저의 BroadcastChannel API를 활용
 > 기존 아키텍처 그림 그리고, 해당 아키텍처 보다 나라면 이렇게 하겠다는 아키텍처 그림 추가 필요
 
-![AICC_AWS_Connect_Front_Architecture_1](assets/img/AICC_AWS_Connect_front_architecture_1.png)
-![AICC_Frontend_Architecture_1](assets/img/AICC_Frontend_Architecture1.png)
-![AICC_Frontend_Architecture_2](assets/img/AICC_Frontend_Architecture2.png)
+![AICC_Frontend_Architecture](assets/img/AICC_Frontend_Architecture.png)
+![AICC_AWS_Connect_Front_Architecture1](assets/img/AICC_AWS_Connect_Front_Architecture1.png)
+![AICC_AWS_Connect_Front_Architecture2](assets/img/AICC_AWS_Connect_Front_Architecture2.png)
 
 [처음으로](#park-gyeongsil-story)
