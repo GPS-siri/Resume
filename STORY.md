@@ -9,10 +9,10 @@
 ## Table of Contents
 
 - Project Story
-  1. [분양 CRM - Here 서비스 개발](#1-분양-crm---here-서비스-개발)
-  2. [(주)힐러비 / 넷마블 & Coway - 구독가능 건강관리 식품&화장품 쇼핑몰 개발](#2-주힐러비--넷마블--coway---구독가능-건강관리-식품화장품-쇼핑몰-개발)
-  3. [AI Chatbot 서비스 - AI-지혜 개발](#3-ai-chatbot-서비스---ai-지혜-개발)
-  4. [대한항공 AICC(AI Contact Center) 구축 프로젝트](#4-대한항공-aiccai-contact-center-구축-프로젝트)
+  - [분양 CRM - Here 서비스 개발](#1-분양-crm---here-서비스-개발)
+  - [(주)힐러비 / 넷마블 & Coway - 구독가능 건강관리 식품&화장품 쇼핑몰 개발](#2-주힐러비--넷마블--coway---구독가능-건강관리-식품화장품-쇼핑몰-개발)
+  - [AI Chatbot 서비스 - AI-지혜 개발](#3-ai-chatbot-서비스---ai-지혜-개발)
+  - [대한항공 AICC(AI Contact Center) 구축 프로젝트](#4-대한항공-aiccai-contact-center-구축-프로젝트)
 
 ### 1. 분양 CRM - Here 서비스 개발
 
@@ -32,12 +32,60 @@
 
 ### 4. 대한항공 AICC(AI Contact Center) 구축 프로젝트
 
-> Connect 프론트 페이지에 Utility 기능 탭 들 하나마다 SPA로 개발 하여, 아키텍쳐가 어색함.
-> 유틸리티 탭이 하나라도 열려 있다면, 메세지 알람이 팝업 되어야 하기 때문에 여러개의 알람이 뜨지 않게 하기 위해 모든 탭들이 알람이 뜬다는 상태를 공유하기 위해 브라우저의 BroadcastChannel API를 활용
-> 기존 아키텍처 그림 그리고, 해당 아키텍처 보다 나라면 이렇게 하겠다는 아키텍처 그림 추가 필요
+대한항공 AICC 구축 프로젝트에서는 AWS의 파트너 개발자로 참여하게 되었습니다.
+맡은 역할은 [AX(Agent Experience)](#41-ax-파트-개발)와 Admin의 Frontend(React)/Backend(Lambda-Node) 개발로, Typescript로 개발 했습니다.
+
+> 사실 처음에는 Frontend 개발 역할만 수행 했었는데, 중간 부터 개발 속도 상승을 위해 Backend 개발 역할까지 부여 받게 되었습니다.
+
+프로젝트에 투입되고 5개월까지는 이렇다 할 만한 이슈나 개발상의 문제점들이 없었습니다. 초기에는 거의 어드민 페이지를 위주로 작업을 진행 했는데, 해당 프로젝트의 어드민 페이지는 어디서나 볼 수 있는 어드민 페이지 그 자체 였습니다. 사용하는 API의 상당수가 AWS 콘솔에서 SDK로 제공하는 API들 혹은 AWS Lambda를 통해서 간단하게 설정 상태값만 바꾸고 하는 기능들 이어서 전혀 무리 없이 개발을 완료 했습니다.
+
+> 어드민 페이지 초반에 개발을 완료 한 후 에는, 전체 프로젝트 기간중 간간이 기능을 추가 한다거나, 바뀐 스펙에 맞게 기능을 수정한다거나 하는 유지/보수 느낌으로 진행 됐습니다.
+
+본 프로젝트를 진행하면서 부딪혔던 이슈들은 모두 AX파트 개발을 진행하면서 발생한 문제들 이었습니다. 아래에서 이슈가 발생한 시간 순서대로 그 이야기를 해보겠습니다.
+
+#### 4.1. AX 파트 개발
+
+#### 4.1.1 브라우저 Broadcast Channel API를 활용한 SPA 상태관리
+
+여느 프로젝트가 그렇듯 초기에는 간단한 기능만으로 구성된 페이지를 기획해서 이를 기반으로 설계를 진행하였고, 개발진행까지 이어졌습니다. 그렇게 결정된 AX 파트의 프론트 구조는 아래 그림과 같습니다. 이후 AX 파트 프론트는 Agent Workspace로 총칭합니다.
+![AICC_AWS_Connect_Front_Architecture1](assets/img/AICC_AWS_Connect_Front_Architecture1.png)
+
+- AWS Connect Agent Workspace: 상담원(Agent)이 사용하는 화면의 레이아웃, UI 프레임
+- AWS Connect SDK(왼쪽): AWS에서 제공하는 SDK로, Connect API와 통신하면서 전화 연결, 상태 관리, 고객 정보 등을 제어 합니다.
+- Utility Tabs: 각 탭 마다 iframe이 하나씩 열리게 됩니다. 상담원은 여러 개의 유틸리티 기능(예: 고객 정보, 결제, 메모 등)
+
+  > iframe 영역에 있는 각 탭별 페이지가 제가 AX파트 Agent Workspace 에서 개발한 영역 입니다.
+
+구조를 보면 예상 되듯이, 대부분의 문제가 저 iframe 으로 구현한 Utility Tab(기능 페이지)들에서 발생 했습니다.
+초기에 계획된 것처럼 Utility Tab에서 정말 간단한 기능들만 구현했다면, 예를들어서 단순하게 각 페이지에서 필요한 정보를 CRUD 하는 기능들만 구현하고 가지고 있는 탭들이었다면 정말 간단했을 겁니다.
+하지만 프로젝트가 진행될수록, 클라이언트가 요청하는 기능들은 복잡해져 갔고, 그 복잡한 기능들을 최대한 좋은 UX로 구현하려면 Utility Tab간에는 물론이고 iframe을 가지고 있는 부모 영역과의 상호작용도 필요해 지게 되었습니다.
+
+> 전개, BroadcastChannel API 로 기능 개발
+> ![Broadcastchannel_API](assets/img/broadcastchannelimage.png)
+
+- 계기, 발단, 필요
+- 전개, 기능개발
+- 해결, 완료, 성과
+
+#### 4.1.2 초기 화면 렌더링 시간 이슈 해결
+
+#### 4.1.3 다수의 iframe 내의 SPA에서 로그인 세션 유지
 
 ![AICC_Frontend_Architecture](assets/img/AICC_Frontend_Architecture.png)
-![AICC_AWS_Connect_Front_Architecture1](assets/img/AICC_AWS_Connect_Front_Architecture1.png)
+
+#### 4.1.4 너무 늦은 구조 변경 제안
+
+프로젝트 말미에 Agent Workspace의 개발을 어느정도 마무리 해놓고 보니, 프론트의 React 코드가 유지/보수 측면에서 퀄리티가 높지 않은 것 같고, 다시 봐도 지금까지 있었던 히스토리를 모두 알지 못한다면 코드를 한번에 이해하기도 힘든 코드가 되어 있었습니다.
+하지만, 프로젝트의 계약 만료가 얼마남지 않은 상황이라 프론트 구조를 바꾸면서 리팩토링 까지 진행 한다는 것은 너무나 큰 리스크가 된 시기였습니다.
+좀 더 일찍 용기를 가지고 구조 변경에 대한 제안을 해보지 않았다는 것이 저 스스로 안타깝고 못한 부분이 아닌가 하는 생각이 드는 순간이었습니다.
+지금와서 생각해보면 공통 컴포넌트들은 나름 잘 분리해 뒀었고, 전체 레이아웃 페이지라 해봤자 몇개 페이지가 안되는 분량이었는데 구조를 주도적으로 바꾸자 하니, 덜컥 겁부터 집어 먹은게 아닌가 하는 생각이 듭니다.
+결국 프론트 구조는 그대로, 지저분하고 트리키 했던 로직/기능 들은 최대한 코드내 주석과 문서들을 정리하며 AX 개발을 마무리 하였습니다.
+
+만약 시간이 더 여유롭게 있었다면,
+아래 그림과 같이 Agent Workspace 전체 화면을 한개의 SPA로 개발해서, SPA의 특장점을 잘 살리는 방향으로 구조를 변경해서 개발했을 것 같습니다.
 ![AICC_AWS_Connect_Front_Architecture2](assets/img/AICC_AWS_Connect_Front_Architecture2.png)
+이렇게 개발했다면, React의 상태관리 라이브러리(Redux)를 활용해서 좀 더 정교하게 상태관리를 할 수 있었을 것 같습니다.
+
+> 유틸리티 탭이 하나라도 열려 있다면, 메세지 알람이 팝업 되어야 하기 때문에 여러개의 알람이 뜨지 않게 하기 위해 모든 탭들이 알람이 뜬다는 상태를 공유하기 위해 브라우저의 BroadcastChannel API를 활용
 
 [처음으로](#park-gyeongsil-story)
