@@ -83,7 +83,9 @@
 
 만약 시간이 더 여유롭게 있었다면,
 아래 그림과 같이 Agent Workspace 전체 화면을 한개의 SPA로 개발해서, SPA의 특장점을 잘 살리는 방향으로 구조를 변경해서 개발했을 것 같습니다.
+
 ![AICC_AWS_Connect_Front_Architecture2](assets/img/AICC_AWS_Connect_Front_Architecture2.png)
+
 이렇게 개발했다면, React의 상태관리 라이브러리(Redux)를 활용해서 좀 더 정교하게 상태관리를 할 수 있었을 것 같습니다.
 
 > 유틸리티 탭이 하나라도 열려 있다면, 메세지 알람이 팝업 되어야 하기 때문에 여러개의 알람이 뜨지 않게 하기 위해 모든 탭들이 알람이 뜬다는 상태를 공유하기 위해 브라우저의 BroadcastChannel API를 활용
