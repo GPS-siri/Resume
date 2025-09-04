@@ -66,7 +66,7 @@ Broadcastchannel API를 사용한 대표적인 기능이 '메세지 알람 기�
 현재 프론트의 구조상, 열려있는 탭이 여러개인 경우 메세지 팝업이 탭이 떠 있는 갯수만큼 뜨는 현상이 발생 합니다.
 이를 정상적으로 언제나 메세지 팝업이 하나만 뜨로고 구현하기 위해, AWS AppSync의 구독 상태를 핸들링 하는 전역변수를 하나 만들어 두고, 해당 전역변수는 Broadcastchannel 로 부터 받는 메세지 이벤트를 통해서만 On/Off 되도록 하여, 여러개의 탭 중에 한개의 탭에서만 AppSync를 통해서 메세지 팝업 이벤트를 수신할 수 있게 하였습니다.
 
-![Broadcastchannel_API](assets/img/broadcastchannel_2.png)
+![Broadcastchannel_API](assets/img/broadcastchannel2.png)
 
 #### 4.1.2 초기 화면 렌더링 시간 이슈 해결
 
