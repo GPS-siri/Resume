@@ -57,13 +57,16 @@
 하지만 프로젝트가 진행될수록, 클라이언트가 요청하는 기능들은 복잡해져 갔고, 그 복잡한 기능들을 최대한 좋은 UX로 구현하려면 Utility Tab간에는 물론이고 iframe을 가지고 있는 부모 영역과의 상호작용도 필요해 지게 되었습니다.
 
 이를 해결하기 위해서, Broadcastchannel 이라는 브라우저 환경에서 제공하는 API를 활용하게 됩니다.
-[Broadcastchannel_API](assets/img/broadcastchannel1.png)
+
+![Broadcastchannel_API](assets/img/broadcastchannel1.png)
+
 이 API는 브라우징 맥락들(창, 탭, 프레임, iframe) 사이에서 동일한 출처에 있는 요소들 간의 기본적인 통신을 허용 합니다.
 
 Broadcastchannel API를 사용한 대표적인 기능이 '메세지 알람 기능' 이었습니다. 해당 기능의 요점은 상담사가 로그인 한 상태에서는 항상 본인에게 온 메세지가 브라우저 가장 상단에 팝업 되어야 한다는 것 이었습니다.
 현재 프론트의 구조상, 열려있는 탭이 여러개인 경우 메세지 팝업이 탭이 떠 있는 갯수만큼 뜨는 현상이 발생 합니다.
 이를 정상적으로 언제나 메세지 팝업이 하나만 뜨로고 구현하기 위해, AWS AppSync의 구독 상태를 핸들링 하는 전역변수를 하나 만들어 두고, 해당 전역변수는 Broadcastchannel 로 부터 받는 메세지 이벤트를 통해서만 On/Off 되도록 하여, 여러개의 탭 중에 한개의 탭에서만 AppSync를 통해서 메세지 팝업 이벤트를 수신할 수 있게 하였습니다.
-[Broadcastchannel_API](assets/img/broadcastchannel2.png)
+
+![Broadcastchannel_API](assets/img/broadcastchannel2.png)
 
 #### 4.1.2 초기 화면 렌더링 시간 이슈 해결
 
