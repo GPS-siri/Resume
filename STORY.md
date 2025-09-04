@@ -68,18 +68,39 @@ Broadcastchannel API를 사용한 대표적인 기능이 '메세지 알람 기�
 
 ![Broadcastchannel_API](assets/img/broadcastchannel2.png)
 
-#### 4.1.2 초기 화면 렌더링 시간 이슈 해결
+#### 4.1.2 다수의 iframe 내의 SPA에서 로그인 세션 유지
+
+상담사가 AWS Connect console을 통해 Okta로 통합 로그인을 진행했음에도 불구하고, iframe 내에서 로그인 세션이 진행되며 다시 로그인을 요청하는 이슈가 발생 했었습니다.
+해당 이슈는 iframe 에서 요청하는 웹페이지의 도메인이 부모페이지의 도메인과 달라서, 브라우저에서 동일 출처로 인식되지 않으므로 쿠키와 세션이 공유되지 않기 때문에 발생하는 이슈 였습니다.
+
+이를 해결하기 위해 일단, Okta 및 로그인을 처리하는 로직상에서 쿠키에서 SameSite 옵션을 None 으로 하고 Secure 옵션을 추가할 필요가 있었습니다.
+그리고 CORS 옵션과 withCredentials 옵션 역시 맞춰주고, 마지막으로 iframe 태그에서도 sandbox="allow-same-origin allow-scripts" 옵션을 추가해 줄 필요가 있었는데 해당 옵션들은 Chrome 브라우저를 포함한 일부 브라우저에서만 작동하는 옵션 값이라고 합니다.
+다행히 상담사들은 Chrome 브라우저만 사용하도록 교육할 예정이라고 하여 해당 옵션을 Utility Tab으로 생성되는 iframe 태그에 추가하도록 AWS Connect Workspace 개발팀에 요청할 수 있었습니다.
+Safari, iOS Webview 브라우저에서는 다른 다른 출처의(cross-site) 쿠키를 아예 막는다고 하는데, 만약 다른 브라우저를 사용할 예정이었다면 AWS Connect Workspace 의 도메인과 똑같이 맞추는 방향으로 수정해야 했을 것 같습니다.
+
+순서대로 다시 써보면
+
+- 쿠키에 SameSite=NONE, Secure 옵션 추가
+- 서버단에 CORS옵션과 withCredentials 옵션 추가
+- iframe 태그에 sandbox="allow-same-origin allow-scripts" 옵션 및 속성 추가
+
+이렇게 iframe 내에서도 로그인 세션을 그대로 유지하고 있는 것처럼 동작이 가능하게 되었습니다.
+
+위의 과정을 일이 진행된 순서대로 말로만 쓰다보니 하루아침에 모든 사항이 고려되고 쉽게 처리된 것 처럼 적혀졌지만, 사실 생각보다 험난한 디버깅 과정들이 있었음을 이곳에 밝힙니다. AWS Connect Workspace 팀이 업무를 하는 시간이 프로젝트 내 개발자들의 업무시간과 겹치지 않는 시간이라는 점과 수정요청을 한번 하는 데도 테스트 케이스를 정말 꼼꼼히 만들고 '이렇게 하면 된다!' 하는 확신이 간신히 섰을때 수정요청을 보낼 수 있었으며, 수정 요청사항을 검토하고 반영까지 해주는데 얼마나 걸릴지 알 수 없는 상황이어서 꽤나 애간장을 태웠던거 같습니다.
+
+#### 4.1.3 초기 화면 렌더링 시간 이슈 해결
 
 상담사가 AWS Connect Console에서 로그인 세션을 진행 후 Agent Workspace로 처음 진입했을 때, 새로운 Utility Tab이 열리면서 내부의 SPA(React)가 초기 렌더링 되는데 약 10~15초가 소요되는 문제가 있었습니다.
 해당 현상은 SPA가 렌더링 될 때, Sesson 및 Cookie에 저장된 로그인 인증 정보를 Okta SDK를 통해 검증하는 Authentication Logic 에서 시간이 너무 오래 소요되는 것이 원인이었습니다. 따라서 해당 Okta Authentication Logic 을 다른 곳으로 옮기거나, 로직 자체를 최적화 해야 했습니다.
+SPA에 Auth Logic이 남아 있는 경우에 Okta 로그인 세션 페이지로 리다이렉트 되는 과정에서 화면이 순간 반짝이는 현상이 상담사의 UX(유저경험)를 저해 할 수 있다는 의견이 있어, 인증 로직 자체를 SPA 바깥으로 빼내서 관리 하도록 결정 하였습니다.
 
 ![AICC_Frontend_Architecture](assets/img/AICC_Frontend_Architecture.png)
 
-#### 4.1.3 다수의 iframe 내의 SPA에서 로그인 세션 유지
+상담사가 Utility Tab + 기능을 활용해서 화면상에 새로운 iframe 태그를 만들면 iframe 내부에서 출력될 페이지를 CloudFront의 Edge Location을 통해 redirect 하게 됩니다. 우리팀은 이 Edge Location 에서 캐싱 되어 있는 정적자원을 가지고 오기 전에, CloudFront Functions 를 활용해서 Authentication Locic을 끼워 넣기로 했습니다.
+CloudFront Functions에서 요청 헤더와 쿠키에 로그인 세션 정보가 있는지 판단합니다.
+로그인 세션 정보가 없다면 Okta Authentication Logic을 Lambda@Edge Functions 에서 실행해, 서버단에서 로그인 검증 로직을 실행합니다.
 
-- 계기, 발단, 필요
-- 전개, 기능개발
-- 해결, 완료, 성과
+위의 그림처럼 검증로직을 옮김으로써, iframe 화면 초기 렌더링 시간을 약 10~15초 에서 3초 미만으로 개선할 수 있었습니다(렌더링 속도 70% 이상 단축).
 
 #### 4.1.4 너무 늦은 구조 변경 제안
 
