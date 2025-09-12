@@ -141,7 +141,7 @@
 
 #### Database
 
-- `MySQL`, `Redis`
+- `MySQL`
 - `AWS Dynamo DB`
 
 ---
