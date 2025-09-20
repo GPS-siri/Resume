@@ -57,16 +57,15 @@ Race Condition(출처: <https://junhyunny.github.io/information/operating-system
 
 #### 2.1 Send bird SDK/API 연동
 
-> send bird API 및 모듈 연동 스토리 Comming soon...
+>
 
 #### 2.2 브릿지 연동
 
-> 브릿지 연동 스토리 Comming soon...
+>
 
 ### 3. AI Chatbot 서비스 - AI-지혜 개발
 
-> 챗봇이 대답하는 프로세스를 도식화, 그림 그리기
-> 중간에 추가된 로직의 위치를 그림 으로 표현 하고, 설명
+>
 
 ### 4. 대한항공 AICC(AI Contact Center) 구축 프로젝트
 
