@@ -10,9 +10,8 @@
 
 - Project Story
   - [분양 CRM - Here 서비스 개발](#1-분양-crm---here-서비스-개발)
-  - [(주)힐러비 / 넷마블 & Coway - 구독가능 건강관리 식품&화장품 쇼핑몰 개발](#2-주힐러비--넷마블--coway---구독가능-건강관리-식품화장품-쇼핑몰-개발)
-  - [AI Chatbot 서비스 - AI-지혜 개발](#3-ai-chatbot-서비스---ai-지혜-개발)
-  - [대한항공 AICC(AI Contact Center) 구축 프로젝트](#4-대한항공-aiccai-contact-center-구축-프로젝트)
+  - [AI Chatbot 서비스 - AI-지혜 개발](#2-ai-chatbot-서비스---ai-지혜-개발)
+  - [대한항공 AICC(AI Contact Center) 구축 프로젝트](#3-대한항공-aiccai-contact-center-구축-프로젝트)
 
 ### 1. 분양 CRM - Here 서비스 개발
 
@@ -53,21 +52,11 @@ Race Condition(출처: <https://junhyunny.github.io/information/operating-system
 프로젝트 마무리 과정이 그 어떤 프로젝트 보다 험난했고, 프로젝트 마감 기한을 맞추기 위해 팀원들과 함께 밤낮 가리지 않고 매달렸습니다.
 정말 몸이 갈리는 프로젝트 였지만, 많은 경험과 자신감을 얻을 수 있게 된 프로젝트 입니다.
 
-### 2. (주)힐러비 / 넷마블 & Coway - 구독가능 건강관리 식품&화장품 쇼핑몰 개발
-
-#### 2.1 Send bird SDK/API 연동
+### 2. AI Chatbot 서비스 - AI-지혜 개발
 
 >
 
-#### 2.2 브릿지 연동
-
->
-
-### 3. AI Chatbot 서비스 - AI-지혜 개발
-
->
-
-### 4. 대한항공 AICC(AI Contact Center) 구축 프로젝트
+### 3. 대한항공 AICC(AI Contact Center) 구축 프로젝트
 
 대한항공 AICC 구축 프로젝트에서는 AWS의 파트너 개발자로 참여하게 되었습니다.
 맡은 역할은 AX(Agent Experience)와 Admin의 Frontend(React)/Backend(Lambda-Node) 개발로, Typescript로 개발 했습니다.
@@ -76,7 +65,7 @@ Race Condition(출처: <https://junhyunny.github.io/information/operating-system
 
 본 프로젝트를 진행하면서 부딪혔던 이슈들은 모두 AX파트 개발을 진행하면서 발생한 문제들 이었습니다. 아래에서 이슈가 발생한 시간 순서대로 그 이야기를 해보겠습니다.
 
-#### 4.1 브라우저 Broadcast Channel API를 활용한 SPA 상태관리
+#### 3.1 브라우저 Broadcast Channel API를 활용한 SPA 상태관리
 
 여느 프로젝트가 그렇듯 초기에는 간단한 기능만으로 구성된 페이지를 기획해서 이를 기반으로 설계를 진행하였고, 개발진행까지 이어졌습니다. 그렇게 결정된 AX 파트의 프론트 구조는 아래 그림과 같습니다. 이후 AX 파트 프론트는 Agent Workspace로 총칭합니다.
 ![AICC_AWS_Connect_Front_Architecture1](assets/img/AICC_AWS_Connect_Front_Architecture1.png)
@@ -104,7 +93,7 @@ Broadcastchannel API를 사용한 대표적인 기능이 '메세지 알람 기�
 
 ![Broadcastchannel_API](assets/img/broadcastchannel2.png)
 
-#### 4.2 다수의 iframe 내의 SPA에서 로그인 세션 유지
+#### 3.2 다수의 iframe 내의 SPA에서 로그인 세션 유지
 
 상담사가 AWS Connect console을 통해 Okta로 통합 로그인을 진행했음에도 불구하고, iframe 내에서 로그인 세션이 진행되며 다시 로그인을 요청하는 이슈가 발생 했었습니다.
 해당 이슈는 iframe 에서 요청하는 웹페이지의 도메인이 부모페이지의 도메인과 달라서, 브라우저에서 동일 출처로 인식되지 않으므로 쿠키와 세션이 공유되지 않기 때문에 발생하는 이슈 였습니다.
@@ -124,7 +113,7 @@ Safari, iOS Webview 브라우저에서는 다른 다른 출처의(cross-site) �
 
 위의 과정을 일이 진행된 순서대로 말로만 쓰다보니 하루아침에 모든 사항이 고려되고 쉽게 처리된 것 처럼 적혀졌지만, 사실 생각보다 험난한 디버깅 과정들이 있었음을 이곳에 밝힙니다. AWS Connect Workspace 팀이 업무를 하는 시간이 프로젝트 내 개발자들의 업무시간과 겹치지 않는 시간이라는 점과 수정요청을 한번 하는 데도 테스트 케이스를 정말 꼼꼼히 만들고 '이렇게 하면 된다!' 하는 확신이 간신히 섰을때 수정요청을 보낼 수 있었으며, 수정 요청사항을 검토하고 반영까지 해주는데 얼마나 걸릴지 알 수 없는 상황이어서 꽤나 애간장을 태웠던거 같습니다.
 
-#### 4.3 초기 화면 렌더링 시간 이슈 해결
+#### 3.3 초기 화면 렌더링 시간 이슈 해결
 
 상담사가 AWS Connect Console에서 로그인 세션을 진행 후 Agent Workspace로 처음 진입했을 때, 새로운 Utility Tab이 열리면서 내부의 SPA(React)가 초기 렌더링 되는데 약 10~15초가 소요되는 문제가 있었습니다.
 해당 현상은 SPA가 렌더링 될 때, Sesson 및 Cookie에 저장된 로그인 인증 정보를 Okta SDK를 통해 검증하는 Authentication Logic 에서 시간이 너무 오래 소요되는 것이 원인이었습니다. 따라서 해당 Okta Authentication Logic 을 다른 곳으로 옮기거나, 로직 자체를 최적화 해야 했습니다.
@@ -138,7 +127,7 @@ CloudFront Functions에서 요청 헤더와 쿠키에 로그인 세션 정보가
 
 위의 그림처럼 검증로직을 옮김으로써, iframe 화면 초기 렌더링 시간을 약 10~15초 에서 3초 미만으로 개선할 수 있었습니다(렌더링 속도 70% 이상 단축).
 
-#### 4.4 너무 늦은 구조 변경 제안
+#### 3.4 너무 늦은 구조 변경 제안
 
 프로젝트 후반부에 Agent Workspace 개발을 어느 정도 마무리한 시점에서, 프론트엔드 React 코드가 유지보수 측면에서 충분히 높은 품질을 확보하지 못했음을 확인 했습니다. 또한, 기존 코드의 히스토리를 모두 파악하지 않는 이상 전체 로직을 빠르게 이해하기 어려운 구조가 되어 있었고, 이런 문제는 주로 iframe 기반 기능 구현 영역에서 발생 했습니다.
 기존에 단순히 코드 레벨에서의 부분적 수정이나 보완으로는 근본적인 문제가 해결되지 않았습니다. 성공적인 리팩토링과 코드 정리를 위해서는 문제의 원인을 제거하는 것, 즉 프론트엔드 구조 자체를 재설계하는 것이 최선의 접근 방식이었을 것입니다.
