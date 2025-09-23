@@ -1,4 +1,4 @@
-# GYEONGSIL PARK - Full-Stack Developer 이력서
+# 박경실(GYEONGSIL PARK)
 
 > Javascript / Typescript / Node 기반의 풀스택 개발자로, 약 5년간 다양한 솔루션 및 서비스 개발에 참여해왔습니다. 아름다운 코드와 구조로 아름다운 제품을 만들기 위해 끊임없이 노력합니다. 실제 사용자 니즈를 빠르게 파악하고 반영하는 개발을 강점으로 삼고 있습니다.
 
