@@ -10,74 +10,57 @@
 - **GitHub:** [https://github.com/GPS-siri](https://github.com/GPS-siri)
 - **연락처:** 010-9052-2896
 
-- **자기소개:**
+### **보유 기술 (Skills)**
 
-  - 아름다움을 추구하는 개발자.
+#### Frontend
 
-    > 개발하는 모든 영역에서 아름다움을 추구합니다. 같은 공간에서 일하는 개발자들 사이에는 공통적으로 모두가 비슷하게 혹은 동일하게 생각하는 아름다움이 있을 것 입니다. 예를 들면 작성하는 코드나 제품/기능 에서 데이터와 로직의 흐름, 개발하는 제품 구조의 아름다움. 팀원 모두가 납득할 수 있는 아름다운 코드가 완성될 때까지 끊임없이 노력 합니다. 나아가 완성된 제품을 사용하는 사람 모두에게 까지 전파되는 아름다움을 추구합니다.
+- 메인기술: `TypeScript`, `React`, `Vue`
+- State Management(캐싱, 전역상태): `React Query(TanStack Query)`, `Redux`, `Recoil`, `Vuex`
+- Styling: `Styled-components`, `Tailwind CSS`
 
-  - 짧은 시간내에 어떻게든 해냈던 개발자. 이제는 더 아름답게 해내는 개발자.
+#### API & Data
 
-    > 지난 약 5년간 각종 외부 프로젝트와 회사 내부 솔루션 개발에 참여하면서 주어진 시간 내에 빠르고 효율적으로 완성하기 위해 최선을 다 해 왔습니다. 그 과정에서 빠르게 배우고 적용하는 법을 익혀 왔습니다. 이제는 단순히 완성에 그치지 않고, 더 나은 구조와 경험을 고려하며 개발하려고 노력하고 있습니다. 10년 이내에 스스로 뿐만 아니라 모두가 인정하는 제품/솔루션을 가장 잘 만드는 개발자가 되고 싶습니다.
+- `GraphQL(Apollo)`, `RESTful API`
 
-  - 팀원과의 긴밀한 협업과 리뷰를 중요시 하는 개발자.
+#### Backend / Cloud & Infrastructure
 
-    > 혼자서 하는 일에는 한계가 더 빨리 찾아오고, 충분한 완성도가 나올 수 없다고 생각합니다. 내가 고려하지 못했던 것을 동료가 생각해주고, 동료가 고려하지 못했던 것을 내가 채워줄 수 있는 상황이 제 커리어 내내 정말 많았습니다. 시간이 허락하는 한 팀원과의 많은 코드 리뷰를 통해 더 아름다운 구조, 코드, 제품으로 발전시킬 수 있다고 믿습니다.
+- Backend: `Node.js`, `Strapi`
+- AWS: `EC2`, `S3`, `Lex`, `Dynamo DB`, `Lambda`, `API Gateway`, `Connect`
+
+#### Tools
+
+- 협업 툴: `Jira`, `Slack`
+- 개발 툴: `Visual Studio Code(VSCode)`
+- 디자인 툴: `Figma`
 
 ---
 
 ### **업무 경력 (Work Experience)**
 
-#### 프로텍트 (2020.08.20 ~ 2025.04.30)
+#### 프로텍트(Protect) (2020.08.20 ~ 2025.04.30) - 4년 10개월 | 정규직 | 개발팀
+▶ AI 챗봇 서비스, AI Contact Center 구축, 쇼핑몰 개발 및 CRM 솔루션 개발 등 다양한 프로젝트의 Frontend 및 Backend 개발, 시스템 최적화를 담당했습니다. AI 챗봇의 응답 속도를 85% 향상하고, AICC 프로젝트의 초기 렌더링 속도를 70% 단축하는 등 성능 병목을 해결하고 사용자 경험을 개선하는데 집중했습니다.
 
-- **대한항공 AICC(AI Contact Center) 구축 프로젝트**
+---
 
-  - 개요: 특이한 구조로부터 발생하는 난관이 많았던 프로젝트입니다. 개발을 진행하면서 브라우저의 여러 API를 테스트 해볼 수 있었고, 평소에는 많이 고민해보지 않았던 브라우저의 메모리 누수에 대해서도 많이 고민하면서 개발하였습니다.
-  - [대한항공 프로젝트 스토리 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#4-대한항공-aiccai-contact-center-구축-프로젝트)
-  - 사용기술: `Typescript` / `React` / `AWS Connect` / `AWS Lambda` / `AWS DynamoDB` / `AWS Lex`
-  - 대고객(고객 파일업로드/고객 결제) 화면 Frontend 개발
-  - Agent의 고객 전화 연결 업무 화면 Frontend/Backend 개발
-    > AWS Connect 팀에서 개발한 페이지의 iframe 안에 들어가는 고객전화 연결 화면 및 각종 Utility 화면 개발
-  - Okta 로그인 세션 및 쿠키 확인, 리디렉션 과정에서의 병목 현상 해결, 로그인/Auth검증 로직을 CloudFront functions로 통합 관리하여, 페이지의 최초 렌더링 과정 단축
-    > 성과: 홈화면 렌더링 속도 10초 → 3초 미만으로 개선 (70% 이상 단축)
-  - AWS Connect 콘솔 로그인(Okta 로그인) 세션이 다수의 iframe 내에서 유지 되지 않는 현상 해결. iframe 태그내에 sandbox, allow-same-origin 등 옵션 추가 & axios에 withCredentials 설정 적용
-    > 성과: AWS Connect 콘솔에서 한 번의 로그인으로 모든 기능 탭(iframe)에서 로그인 세션 공유/유지 가능
-  - 브라우저의 BroadcastChannel API를 활용해, 각 기능 탭(iframe) 간 통신 기능 개발
+### **주요 프로젝트**
 
-    > 성과: 각 기능 탭 사이에 특정기능(알람기능)에서 메시지를 전달하도록 해, 특정 기능들의 실행 상태를 공유하도록 기능 개선
+- **AI Chatbot "AI 지혜(AI-Jihye)"서비스 (2023.12 ~ 2025.04)[(AI-Jihye: https://ai-jihye.com/)](https://ai-jihye.com/)**
+![AI Chatbot_image](assets/img/exp-AIChatbot.png)
 
-- **AI Chatbot 서비스 - AI 지혜 개발 [(AI-Jihye: https://ai-jihye.com/)](https://ai-jihye.com/)**
 
-  - 개요: 프로젝트의 전체적인 구조, 설계 부터 시작해서 Frontend와 Backend 개발까지 제가 주도해서 개발한 제품으로, 스스로 결정해야 될 내용이 많았던 프로젝트 입니다. 사용자와의 대화에서 가장 중요한 자연어처리 머신의 개발에 가장 많은 시간을 투자 하였습니다. 설정한 임계값보다 큰 점수를 받은 질문에 대해서는 최대한 가볍게 설계한 자체검색 엔진을 사용하고, 이외의 질문에 대해서는 LLM(Mistral 혹은 Claude)에 답변을 하도록 개발 하였습니다.
-  - [AI-Jihye 프로젝트 스토리 상세 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#3-ai-chatbot-서비스---ai-지혜-개발)
-  - 사용기술: `Vue` / `Node`(strapi) / `MySQL5.7` / `AWS EC2` / `Nginx` / `AWS Lex` / `Claude API` / `Mistral AI API`
-  - 코사인유사도 기반 자체 검색 엔진과 LLM(Mistral/Claude)을 결합한 하이브리드 자연어 처리 머신 설계 및 개발.
-    > 확신도가 높은 질문은 자체 엔진으로 빠르게 처리하고, 복잡하고 기존에 등록되지 않은 단어나 문장이 많은 질문은 LLM에 위임하는 방식으로 응답 정확도와 속도를 모두 최적화.
-    > 성과: 챗봇 실시간 응답 생성 속도가 평균 15초 → 2초대로 개선되어 약 85% 성능 향상
+- **대한항공 AICC(AI Contact Center) 구축 프로젝트 (2024.03 ~ 2025.03)**
+![Korean Air AICC_image](assets/img/exp-Koreanair.png)
 
-- **(주)힐러비 / 넷마블 & Coway - 구독가능 건강관리 식품&화장품 쇼핑몰**
 
-  - 개요: React Native 로 개발한 앱에 웹뷰(Webview)로 많은 화면을 구성한 프로젝트 입니다. 웹뷰(React)로 커머스 관련 화면과 구독 시스템 화면을 구현 하였습니다. 넷마블 모바일 개발팀과 협업하여, JS Bridge 로 웹뷰와 앱 사이에서 모바일 기기의 네이티브 기능들을 컨트롤 하였습니다.
-  - 사용기술: `Typescript` / `React`
-  - 넷마블 모바일 팀과의 협업을 주도하며, JS Bridge로 연동 되는 기능들의 웹뷰 개발을 담당
-  - 계약된 PG사의 API 연동, 결제 화면 및 시스템 구현
-  - 상품 구독 관리 기능 개발
-  - 의사&약사 화상 상담 기능 개발 주도
-    > Sendbird 화상통화 솔루션 연동
+- **(주)힐러비 / 넷마블 - 구독가능 건강관리 식품&화장품 쇼핑몰 개발(2022.02 ~ 2023.06)**
+![HealerB_image](assets/img/exp-HealerB.png)
+
 
 - **분양 CRM-Here 서비스 개발 [(Here Service: https://here.re.kr)](https://here.re.kr)**
+![Here Service_image](assets/img/exp-HereService.png)
 
-  - 개요: 고객(솔루션을 구입한 파트너 회사)과 가장 가깝게, 많이 커뮤니케이션을 하며 진행했던 프로젝트 입니다. 개발 기간과 유지 보수 기간 동안 고객의 피드백을 실시간으로 반영하여 사용성을 지속적으로 개선 하였습니다. 사용자들이 어떤 UI를 편안해 하고 어떤 기능을 더 선호하는지 더 알 수 있게 되었습니다.
-  - [분양 CRM 프로젝트 스토리 상세 바로가기](https://github.com/GPS-siri/Resume/blob/main/STORY.md/#1-분양-crm---here-서비스-개발)
-  - 사용기술: `Vue` / `Node`(Strapi) / `MySQL5.7` / `AWS EC2` / `Nginx`
-  - Here 서비스 소개서 - [https://here.re.kr/here_service_211105.pdf](https://here.re.kr/here_service_211105.pdf)
-    > 부동산 예비 계약 고객의 데이터를 수집하고, 카카오톡 친구톡 또는 단체 문자를 통해 계약률을 높이는 솔루션 입니다. 사전 영업 방문, 방문 예약, 상담 고객 등의 데이터를 수집할 수 있으며, 이를 통해 데이터 수집 비용과 마케팅 비용을 효과적으로 절감할 수 있도록 개발되었습니다.
-  - 모델하우스 상담사 시스템 개발
-    > 모델하우스 내에 상주하는 상담사가 사용하는 시스템으로, 아파트 구매에 관심이 있는 고객에게 분양 상품을 소개하고 판매하기 위해 사용하는 영업 전문가용 시스템입니다. 모델 하우스를 방문한 고객들의 데이터를 모아, 대시보드 페이지에 중요 데이터(설문 데이터 등)를 디스플레이하는 기능을 주요 기능으로 가지고 있습니다.
-  - 건설사의 분양 CRM(Admin 페이지 포함) 서비스 개발
-  - 카카오톡 전송 기능 개발
-  - 원패스 QR 시스템 개발
-  - GS건설(자이), 자이에스앤디(자이르네), 삼성물산(레미안)에 솔루션 납품
+ 
+---
 
 ### **기타 참여 프로젝트**
 
@@ -109,38 +92,29 @@
 
 ---
 
-### **보유 기술 (Skills)**
+### 학력 및 자격
 
-#### Frontend
+#### ▶ 학력
 
-- `React`: 컴포넌트 기반 개발, Hooks, Redux등 상태관리 활용 (3년+)
-- `Vue`: Vuex 활용 (3년+)
-- `JavaScript`: ES6+
-- `HTML/CSS`: 반응형 웹, Cross-browser 호환성
-- `Apollo GraphQL`
+- 대구한의대학교 IT전공 졸업 (2011-2017)
+- 학점: 3.79/4.5
 
-#### Backend
+#### ▶ 자격증
 
-- `Node.js`: RESTful API 설계 및 구현 (2년+)
-- `AWS LEX`: AI 챗봇 서비스 연동 및 개발
-- `AWS Lambda`, `API gateway`
+- 정보처리기사 (2016.05.16 취득)
 
-#### DevOps & Cloud & Infrastructure
+#### ▶ 해외 경험
 
-- AWS: `EC2`, `S3`, `Auto Scaling` 구성 및 운영
-- 모니터링: `Google Analytics`, 서버 부하 테스트, `PM2`, `Grafana`
-
-#### Database
-
-- `MySQL`
-- `AWS Dynamo DB`
+- UMS (미국) IT부서 QA 업무 (2018.05.25 - 2019.06.03)
 
 ---
 
-### **학력 (Education)**
+- **자기소개:**
 
-#### 대구한의대학교 IT의료산업학과 (2011.02 ~ 2022.02)
-
-- 학점: 3.79 / 4.5
-
----
+“아름다움을 설계하는 개발자, 박경실입니다.”
+5년간의 개발 경력 동안, 저는 빠르게 완성하는 개발자에서 “아름답게 완성하는 개발자”로 성장했습니다.
+단순히 작동하는 코드를 넘어서, 구조적으로 이해하기 쉬우며 유지보수가 용이한 코드를 추구 합니다.
+React와 Vue, Node.js 기반의 프로젝트를 수행하며, 서비스의 성능과 사용자 경험을 함께 개선하는데 집중했습니다.
+특히, 대한항공 AICC 프로젝트에서는 로그인 세션 병목과 렌더링 지연 문제를 CloudFront functions로 통합 관리하여 홈화면 속도를 Lighthouse 기준 70% 개선했고, AI 지혜(AI-Jihye) 서비스에서는 LLM과 코사인 유사도 기반 자체 엔진을 최적화하여 챗봇 응답 속도를 85% 향상 시켰습니다. 이러한 과정에서 문제의 근본 원인을 분석하고, 브라우저 내부 동작을 실험하며 학습한 경험은 제 개발 인생의 중요한 자산이 되었습니다.
+저는 팀의 리뷰 문화와 협업을 가장 중요하게 생각합니다. 동료의 시선에서 더 나은 코드와 구조를 찾으며, 서로의 부족한 부분을 채워 완성도를 높여 왔습니다. 특히, 힐러비/넷마블 쇼핑몰 개발 프로젝트에서 Native-Web 간 데이터 포맷 및 비동기 처리, 콜백 불일치 문제 발생 시 넷마블 React Native 개발팀과 API Spec을 공동 정의하고, TypeScript 를 활용하여 JS Bridge 인터페이스의 타입을 강제함으로써 통합 테스트 비용을 절감하고, 연동 안정성을 99% 달성에 기여했습니다.
+앞으로도 사용자에게 “기능이 잘 작동하는 서비스”가 아닌 “아름답게 작동하는 제품”을 제공하는 개발자가 되겠습니다.
